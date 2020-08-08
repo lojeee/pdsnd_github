@@ -1,6 +1,7 @@
 ### Date created
-bikeshare: 15/july/2020
-Git Project: 8/Augest/2020
+bikeshare: 15/july/2020..
+
+Git Project: 8/Augest/2020..
 
 ### Project Title
 Udacity BikeShare and Git Project
@@ -13,7 +14,4 @@ bikeshare.py
 chicago.csv
 new_york_city.csv
 washington.csv
-
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
 
