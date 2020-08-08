@@ -10,7 +10,7 @@ import datetime
 # ................................................. #
 
 # Dictionary that has the path to the file
-CITY_DATA = { 'chicago': 'chicago.csv',
+city_data = { 'chicago': 'chicago.csv',
               'newyorkcity': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
@@ -92,8 +92,8 @@ def load_data(city, month, day):
             df - Pandas DataFrame containing city data filtered by month and day
     """
     
-    # Load data file into a dataframe, using the dictionary CITY_DATA
-    df=pd.read_csv(CITY_DATA[city])
+    # Load data file into a dataframe, using the dictionary city_data
+    df=pd.read_csv(city_data[city])
     
     # Convert argument to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -137,19 +137,19 @@ def time_stats(df):
     if('month_of_year' in df.columns):
         # Display the most common month using mode which gets the most frequent 
         common_month = df['month_of_year'].mode()[0]
-        print("｜ \t Common Month: ", common_month, "\t\t\t  ｜")
+        print('｜ \t Common Month: {} \t\t\t  ｜'.format(common_month))
         print('―'*63)
         
     if('day_of_week' in df.columns):
         # Display the most common day of week
         common_day_of_week= df['day_of_week'].mode()[0]
-        print("｜ \t Common Day Of Week: ", common_day_of_week, "\t\t  ｜")
+        print("｜ \t Common Day Of Week: {}  \t\t  ｜".format(common_day_of_week))
         print('―'*63)
         
     if('hour' in df.columns):
         # Display the most common start hour
         common_start_hour=df['hour'].mode()[0]
-        print("｜ \t Common Starting Hour: ", common_start_hour, "\t\t\t  ｜")
+        print("｜ \t Common Starting Hour: {} \t\t\t  ｜".format(common_start_hour))
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
@@ -171,21 +171,21 @@ def station_stats(df):
     if('Start Station' in df.columns):
         # Display most commonly used start station
         common_start_station = df['Start Station'].mode()[0]
-        print("｜  Common Start Station: ", common_start_station, "\t  ｜")
+        print("｜  Common Start Station: {} \t  ｜".format(common_start_station))
         print('―'*63)
         
     if('End Station' in df.columns):
         # Display most commonly used end station
         common_end_station = df['End Station'].mode()[0]
-        print("｜  Common End Station: ", common_end_station, "\t  ｜")
+        print("｜  Common End Station: {} \t  ｜".format(common_end_station))
         print('―'*63)
         
     if('Start Station' and 'End Station' in df.columns):
         # Display most frequent combination of start station and end station trip
         df["start_end"]=  df['Start Station']+' => '+df['End Station']+'\t  ｜'
         common_start_end = df['start_end'].mode()[0]
-        print("｜  Common start station and end station trip: \t\t  ｜\n｜ ",common_start_end)
-        print('―'*63)
+        print("｜  Common Start Station and End Station Trip: \t\t  ｜\n｜ ",common_start_end)
+        print( '―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
     print('―'*63,'\n\n')
@@ -199,34 +199,34 @@ def trip_duration_stats(df):
     """
 
     print('―'*63)
-    print('｜    statistics on the total and average trip duration \t  ｜')
+    print('｜    Statistics on the total and average trip duration \t  ｜')
     print('―'*63)
     start_time = time.time()
 
     if('Trip Duration' in df.columns):
         # Display total travel time
         total_travel_time = df['Trip Duration'].sum()
-        print("｜\t  Total Travel Time: ",total_travel_time, "\t\t  ｜")
+        print("｜\t  Total Travel Time: {}\t\t  ｜".format(total_travel_time))
         print('―'*63)
         # Display mean travel time
         avg_travel_time = df['Trip Duration'].mean()
-        print("｜\t  Average Travel Time: ",avg_travel_time, "\t\t  ｜")
+        print("｜\t  Average Travel Time: {}\t\t  ｜".format(avg_travel_time))
         print('―'*63)
         # Display most commonly used travel time
         common_travel_time = df['Trip Duration'].mode()[0]
-        print("｜  Common Trip Duration: ", common_travel_time, "\t  ｜")
+        print("｜  Common Trip Duration: {}\t  ｜".format(common_travel_time))
         print('―'*63)
         # Display standard deviation of travel time
         std_travel_time = df['Trip Duration'].std()
-        print("｜  Trip Duration standard deviation : ",std_travel_time, "\t  ｜")
+        print("｜  Trip Duration standard deviation : {}\t  ｜".format(std_travel_time))
         print('―'*63)
         # Display maximum travel time
         max_travel_time = df['Trip Duration'].max()
-        print("｜  Maximum Trip Duration : ", max_travel_time, "\t  ｜")
+        print("｜  Maximum Trip Duration : {}\t  ｜".format(max_travel_time))
         print('―'*63)
         # Display minimum travel time
         min_travel_time = df['Trip Duration'].min()
-        print("｜  Minimum Trip Duration : ", min_travel_time, "\t  ｜")
+        print("｜  Minimum Trip Duration : {}\t  ｜".format(min_travel_time))
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
@@ -260,15 +260,15 @@ def user_stats(df):
     if('Birth Year' in df.columns):
         # Display earliest, most recent, and most common year of birth 
         earliest_year = df['Birth Year'].min()
-        print("｜    Earliest year of birth: ",int(earliest_year), "\t\t\t  ｜") 
+        print("｜    Earliest year of birth: {}\t\t\t  ｜".format(int(earliest_year))) 
         print('―'*63)
     
         recent_year = df['Birth Year'].max()
-        print("｜    Most recent year of birth: ",int(recent_year), "\t\t\t  ｜") 
+        print("｜    Most recent year of birth: {}\t\t\t  ｜".format(int(recent_year)))  
         print('―'*63)
 
         common_year = df['Birth Year'].mode()[0]
-        print("｜    Common year of birth : ",int(common_year), "\t\t\t  ｜")
+        print("｜    Common year of birth : {}\t\t\t  ｜".format(int(common_year)))
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
