@@ -1,4 +1,4 @@
-
+# date : 13th of july to 15th of july 2020
 # 1. Import necessary libraries 
 # ................................................. #
 import time
@@ -212,6 +212,10 @@ def trip_duration_stats(df):
         # Display mean travel time
         avg_travel_time = df['Trip Duration'].mean()
         print("｜\t  Average Travel Time: ",avg_travel_time, "\t\t  ｜")
+        print('―'*63)
+        # Display most commonly used travel time
+        common_travel_time = df['Trip Duration'].mode()[0]
+        print("｜  Common Trip Duration: ", common_travel_time, "\t  ｜")
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
