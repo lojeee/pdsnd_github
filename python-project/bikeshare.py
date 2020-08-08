@@ -11,7 +11,7 @@ import datetime
 # ................................................. #
 
 # Dictionary that has the path to the file
-CITY_DATA = { 'chicago': 'chicago.csv',
+city_data = { 'chicago': 'chicago.csv',
               'newyorkcity': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
@@ -93,8 +93,8 @@ def load_data(city, month, day):
             df - Pandas DataFrame containing city data filtered by month and day
     """
     
-    # Load data file into a dataframe, using the dictionary CITY_DATA
-    df=pd.read_csv(CITY_DATA[city])
+    # Load data file into a dataframe, using the dictionary city_data
+    df=pd.read_csv(city_data[city])
     
     # Convert argument to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -185,7 +185,7 @@ def station_stats(df):
         # Display most frequent combination of start station and end station trip
         df["start_end"]=  df['Start Station']+' => '+df['End Station']+'\t  ｜'
         common_start_end = df['start_end'].mode()[0]
-        print("｜  Common start station and end station trip: \t\t  ｜\n｜ ",common_start_end)
+        print("｜  Common Start Station and End Station Trip: \t\t  ｜\n｜ ",common_start_end)
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
@@ -200,7 +200,7 @@ def trip_duration_stats(df):
     """
 
     print('―'*63)
-    print('｜    statistics on the total and average trip duration \t  ｜')
+    print('｜    Statistics on the total and average trip duration \t  ｜')
     print('―'*63)
     start_time = time.time()
 
