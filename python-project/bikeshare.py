@@ -217,9 +217,17 @@ def trip_duration_stats(df):
         common_travel_time = df['Trip Duration'].mode()[0]
         print("｜  Common Trip Duration: ", common_travel_time, "\t  ｜")
         print('―'*63)
-        # Display most standard deviation of travel time
+        # Display standard deviation of travel time
         std_travel_time = df['Trip Duration'].std()
         print("｜  Trip Duration standard deviation : ",std_travel_time, "\t  ｜")
+        print('―'*63)
+        # Display maximum travel time
+        max_travel_time = df['Trip Duration'].max()
+        print("｜  Maximum Trip Duration : ", max_travel_time, "\t  ｜")
+        print('―'*63)
+        # Display minimum travel time
+        min_travel_time = df['Trip Duration'].min()
+        print("｜  Minimum Trip Duration : ", min_travel_time, "\t  ｜")
         print('―'*63)
         
     print("｜   This took %s seconds to calculate \t  ｜" % (time.time() - start_time))
